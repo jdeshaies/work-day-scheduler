@@ -13,6 +13,8 @@ $(function () {
   $('.saveBtn').on('click', function() {
     var hourSaved = $(this).parent().attr('id');
     var textSaved = $(this).prev().val().trim();
+    userInput[hourSaved] = textSaved;
+    localStorage.setItem('userInput', JSON.stringify(userInput));
   });
   
   // TODO: Add code to apply the past, present, or future class to each time
