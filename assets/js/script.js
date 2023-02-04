@@ -19,5 +19,8 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
+  // Displays the current date in the header of the page using dayjs()
+  var currentDateEl = $('#currentDay');
+  var today = dayjs();
+  currentDateEl.text(today.format('dddd, MMMM D[th]'));
 });
