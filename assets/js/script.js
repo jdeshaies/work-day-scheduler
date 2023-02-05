@@ -17,11 +17,8 @@ $(function () {
   // useful when saving the description in local storage?
   $('.saveBtn').on('click', function() {
     var hourSaved = $(this).parent().attr('id');
-    console.log('Hour' + hourSaved);
     var textSaved = $(this).prev().val().trim();
-    console.log('Text' + textSaved);
     userInput[hourSaved] = textSaved;
-    console.log(userInput);
     localStorage.setItem('userInput', JSON.stringify(userInput));
   });
 
@@ -31,6 +28,20 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+  var currentHour = parseInt(dayjs().format('HH'));
+  console.log('Current Hour: ' + currentHour);
+  $('.time-block').each(function(){
+    var timeBlockHour = parseInt($(this).attr('id').slice(-2));
+    console.log('Time Block Hour: ' + timeBlockHour);
+    if (timeBlockHour < currentHour) {
+      $(this).addClass('past');
+    } else if (timeBlockHour === currentHour) {
+      $(this).addClass('present');
+    } else {
+      $(this).addClass('future');
+    }
+  });
+  
   
 
   // TODO: Add code to get any user input that was saved in localStorage and set
