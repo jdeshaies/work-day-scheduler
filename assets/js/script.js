@@ -38,7 +38,6 @@ $(function () {
   var today = dayjs();
   var todayLastDigit = dayjs().format('D').slice(-1);
   var numberSuffix = '';
-  console.log(todayLastDigit);
   if (todayLastDigit === '1') {
     numberSuffix = 'st';
   } else if (todayLastDigit === '2') {
