@@ -17,10 +17,8 @@ $(function () {
   
   // Loops through all time blocks and adds past, present, or future styling based on the current hour
   var currentHour = parseInt(dayjs().format('HH'));
-  console.log('Current Hour: ' + currentHour);
-  $('.time-block').each(function(){
+   $('.time-block').each(function(){
     var timeBlockHour = parseInt($(this).attr('id').slice(-2));
-    console.log('Time Block Hour: ' + timeBlockHour);
     if (timeBlockHour < currentHour) {
       $(this).addClass('past');
     } else if (timeBlockHour === currentHour) {
@@ -38,5 +36,17 @@ $(function () {
   // Displays the current date in the header of the page using dayjs()
   var currentDateEl = $('#currentDay');
   var today = dayjs();
-  currentDateEl.text(today.format('dddd, MMMM D'));
+  var todayLastDigit = dayjs().format('D').slice(-1);
+  var numberSuffix = '';
+  console.log(todayLastDigit);
+  if (todayLastDigit === '1') {
+    numberSuffix = 'st';
+  } else if (todayLastDigit === '2') {
+    numberSuffix = 'nd';
+  } else if (todayLastDigit === '3') {
+    numberSuffix = 'rd';
+  } else {
+    numberSuffix = 'th';
+  }
+  currentDateEl.text(today.format('dddd, MMMM D')+numberSuffix);
 });
