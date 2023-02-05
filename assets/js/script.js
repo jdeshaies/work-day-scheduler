@@ -29,8 +29,6 @@ $(function () {
       $(this).addClass('future');
     }
   });
-  
-  
 
   // Loops through each time block and populates the text area if there is a value in local storage
   $('.time-block').each(function(){
