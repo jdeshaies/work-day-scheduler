@@ -37,12 +37,13 @@ $(function () {
   var currentDateEl = $('#currentDay');
   var today = dayjs();
   var todayLastDigit = dayjs().format('D').slice(-1);
+  var todayDate = dayjs().format('D');
   var numberSuffix = '';
-  if (todayLastDigit === '1') {
+  if (todayLastDigit === '1' && todayDate !== '11') {
     numberSuffix = 'st';
-  } else if (todayLastDigit === '2') {
+  } else if (todayLastDigit === '2' && todayDate !== '12') {
     numberSuffix = 'nd';
-  } else if (todayLastDigit === '3') {
+  } else if (todayLastDigit === '3' && todayDate !== '13') {
     numberSuffix = 'rd';
   } else {
     numberSuffix = 'th';
